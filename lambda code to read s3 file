@@ -1,0 +1,30 @@
+import json
+import boto3        #this are the libraries that we have to import
+import io
+import pandas as pd  #for pandas we have to select aws layer > AWSDataWrangler>python39
+import s3fs          #for s3file syatem libraries we have to create custom layer here need to load python.zip to s3 copy URI and create custom layer
+import fsspec
+import csv
+
+def lambda_handler(event, context):     #lambda handler function will be the entry point
+    # TODO implement
+    print(1)
+    s3 = boto3.client('s3')          #here we are mentioning using boto3 we have to access s3
+    
+    df=pd.read_csv("s3://amar2022/data/asl.csv")
+    print(df)
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Hello from Lambda!')
+    }
+
+OutPut:-
+Test Event Name
+test
+
+Response
+{
+  "statusCode": 200,
+  "body": "\"Hello from Lambda!\""
+}
